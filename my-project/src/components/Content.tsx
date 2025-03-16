@@ -19,7 +19,7 @@ export default function Content() {
 
   const Slide = ({ item }: Slide) => {
     const getRandomNumber = () => {
-      return Math.floor(Math.random() * 5) + 1;
+      return Math.floor(Math.random() * 50) / 10 + 1;
     };
 
     return (
@@ -62,15 +62,22 @@ export default function Content() {
             <button className="content-explore-button">EXPLORE MORE</button>
             <button className="content-create-button">CREATE NFT</button>
           </div>
+          <div className="content-stats">
+            <div>
+              <h2 className="content-stats-number">430K+</h2>
+              <p className="content-stats-category">Art Works</p>
+            </div>
+            <div>
+              <h2 className="content-stats-number">159K+</h2>
+              <p className="content-stats-category">Creators</p>
+            </div>
+            <div>
+              <h2 className="content-stats-number">87K+</h2>
+              <p className="content-stats-category">Collections</p>
+            </div>
+          </div>
         </div>
-        <div
-          style={{
-            height: "300px",
-            width: "100%",
-            display: "block",
-            position: "static",
-          }}
-        >
+        <div className="content-presentation-container">
           <div className="content-images">
             <img
               className="content-image-first"
@@ -95,39 +102,78 @@ export default function Content() {
           </div>
         </div>
       </div>
-      <div className="content-product">
-        <h2 className="content-product-header">Weekly - Top NFT</h2>
-        <div className="content-swiper">
-          <Swiper
-            modules={[Navigation, FreeMode]}
-            spaceBetween={30}
-            slidesPerView={2}
-            loop={true}
-            navigation={{
-              enabled: true,
-              prevEl: '.content-navigation-prev',
-              nextEl: '.content-navigation-next',
-            }}
-            freeMode={{
-              enabled: true,
-            }}
-            breakpoints={{
-              768: {
-                slidesPerView: 3,
-              },
-            }}
+      <div style={{ position: "relative", width: "100%", height: "620px" }}>
+        <div className="content-product">
+          <h2 className="content-product-header">Weekly - Top NFT</h2>
+          <div className="content-swiper">
+            <Swiper
+              modules={[Navigation, FreeMode]}
+              spaceBetween={50}
+              slidesPerView={2}
+              loop={true}
+              centeredSlides={true}
+              navigation={{
+                enabled: true,
+                prevEl: ".content-navigation-prev",
+                nextEl: ".content-navigation-next",
+              }}
+              freeMode={{
+                enabled: true,
+              }}
+              breakpoints={{
+                768: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 150,
+                },
+              }}
+            >
+              {nfts.map((nft) => (
+                <SwiperSlide key={nft}>
+                  <Slide item={nft} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <div className="content-navigation">
+            <button className="content-navigation-prev">
+              <img
+                style={{ width: "100%", padding: "40%" }}
+                src="/prevContent.svg"
+                alt=""
+              />
+            </button>
+            <button className="content-navigation-next">
+              <img
+                style={{ width: "100%", padding: "40%" }}
+                src="/nextContent.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="content-end">
+        <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column"}}>
+          <div>
+            <h2 className="content-end-header">Create and Sell NFTs</h2>
+            <p className="content-end-description">World’s Largest NFT Place</p>
+          </div>
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "30px" }}
           >
-            {nfts.map((nft) => (
-              <SwiperSlide key={nft}>
-                <Slide item={nft} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <button className="content-end-explore">Explore More</button>
+            <button className="content-end-sell">Sell Artwork</button>
+          </div>
         </div>
-        <div className="content-navigation">
-          <button className="content-navigation-prev"><img style={{width: "100%", padding: "30%"}} src="/prevContent.svg" alt="" /></button>
-          <button className="content-navigation-next"><img style={{width: "100%", padding: "30%"}} src="/nextContent.svg" alt="" /></button>
-        </div>
+        <img
+          className="content-end-image"
+          src="/endContent.svg"
+          alt="page-end"
+        />
       </div>
     </div>
   );
