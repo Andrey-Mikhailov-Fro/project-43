@@ -157,13 +157,13 @@ export default function Content() {
         </div>
       </div>
       <div className="content-end">
-        <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column"}}>
+        <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column", width: "60%"}}>
           <div>
             <h2 className="content-end-header">Create and Sell NFTs</h2>
             <p className="content-end-description">World’s Largest NFT Place</p>
           </div>
           <div
-            style={{ display: "flex", justifyContent: "center", gap: "30px" }}
+            className="content-end-button-group"
           >
             <button className="content-end-explore">Explore More</button>
             <button className="content-end-sell">Sell Artwork</button>
